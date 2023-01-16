@@ -1,5 +1,6 @@
 package com.asoft.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,7 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Cidade {
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +20,18 @@ public class Cidade {
 	
 	@Column(nullable = false)
 	private String nome;
+	
+	@Column(nullable = false)
+	private String telefone;
+	
+	private LocalDateTime dataNascimento;
+	
+	private Boolean ativo;
 
 	@ManyToOne
-	@JoinColumn(name = "estado_id", nullable = false)
-	private Estado estado;
+	@JoinColumn(name = "endereco_id", nullable = false)
+	private Endereco endereco;
+	
 	
 	public Long getId() {
 		return id;
@@ -39,13 +48,37 @@ public class Cidade {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public Estado getEstado() {
-		return estado;
+
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public LocalDateTime getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDateTime dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
@@ -61,9 +94,12 @@ public class Cidade {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cidade other = (Cidade) obj;
+		Cliente other = (Cliente) obj;
 		return Objects.equals(id, other.id);
 	}
+	
+	
+	
 	
 	
 }
