@@ -5,9 +5,11 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.asoft.exception.CodigoNaoExisteException;
+import com.asoft.exception.ErroChaveEstrangueiraEmUsoException;
 import com.asoft.model.Estado;
 import com.asoft.repository.EstadoRepository;
 
@@ -42,6 +44,10 @@ public class EstadoService {
 		} catch (NoSuchElementException e) {
 			
 			throw new CodigoNaoExisteException(String.format("Não existe um Estado com o codigo %d ", estadoId));
+		
+		} catch(DataIntegrityViolationException e) {
+			
+			throw new ErroChaveEstrangueiraEmUsoException(String.format("Esse codigo: %d esta sendo usado como FK", estadoId));
 		}
 
 		
