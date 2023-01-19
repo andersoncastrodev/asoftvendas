@@ -30,6 +30,11 @@ public class CidadeService {
 		return cidadeRepository.findById(cidadeId);
 	}
 	
+	public List<Cidade> consultarLikeNome(String nome){
+		
+		return cidadeRepository.findByNomeContaining(nome);
+	}
+	
 	public Cidade salvar(Cidade cidade){
 		
 		//Pegar o codigo que vem lá do view no controller.

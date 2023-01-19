@@ -28,6 +28,10 @@ public class EstadoService {
 		return estadoRepository.findById(id);
 	}
 	
+	public List<Estado> consultarLikeNome(String nome){
+		return estadoRepository.findByNomeContaining(nome);
+	}
+	
 	public Estado salvar(Estado estado) {
 		
 		return estadoRepository.save(estado);

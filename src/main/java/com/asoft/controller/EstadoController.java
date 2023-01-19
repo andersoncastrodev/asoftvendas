@@ -45,6 +45,12 @@ public class EstadoController {
 		return ResponseEntity.ok(estado.get());	
 	}
 	
+	@GetMapping("/por-nome")
+	public ResponseEntity<List<Estado>> listarLikeNome(String nome){
+		
+		return ResponseEntity.ok().body( estadoService.consultarLikeNome(nome) );
+	}
+	
 	@PostMapping
 	public ResponseEntity<Estado> adicionar(@RequestBody Estado estado) {
 

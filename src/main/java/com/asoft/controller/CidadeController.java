@@ -45,6 +45,12 @@ public class CidadeController {
 		return ResponseEntity.ok(cidade.get());
 	}
 	
+	@GetMapping("/por-nome")
+	public ResponseEntity<List<Cidade>> consultarLikeNome(String nome){
+	
+		return ResponseEntity.ok().body(cidadeService.consultarLikeNome(nome));
+	}
+	
 	@PostMapping
 	public ResponseEntity<?> adicionar(@RequestBody Cidade cidade){
 		
@@ -96,6 +102,7 @@ public class CidadeController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
+	
 	
 	
 }
