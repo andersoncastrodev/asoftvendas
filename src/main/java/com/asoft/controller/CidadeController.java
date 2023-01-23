@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.asoft.dto.CidadeEstado;
 import com.asoft.exception.CodigoNaoExisteException;
 import com.asoft.model.Cidade;
 import com.asoft.service.CidadeService;
@@ -53,7 +51,7 @@ public class CidadeController {
 	}
 	
 	@GetMapping("/cidade-estado")
-	public ResponseEntity<List<CidadeEstado>> consultarCidadeEstado(){
+	public ResponseEntity<List<String>> consultarCidadeEstado(){
 		return ResponseEntity.ok().body(cidadeService.consultaCidadeEstado());
 	}
 	

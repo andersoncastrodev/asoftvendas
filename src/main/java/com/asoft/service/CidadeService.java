@@ -2,12 +2,9 @@ package com.asoft.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-
-import com.asoft.dto.CidadeEstado;
 import com.asoft.exception.CodigoNaoExisteException;
 import com.asoft.model.Cidade;
 import com.asoft.model.Estado;
@@ -36,7 +33,7 @@ public class CidadeService {
 		return cidadeRepository.findByNomeContaining(nome);
 	}
 	
-	public List<CidadeEstado> consultaCidadeEstado(){
+	public List<String> consultaCidadeEstado(){
 		return cidadeRepository.buscaCidadeEstado();
 	}
 	
