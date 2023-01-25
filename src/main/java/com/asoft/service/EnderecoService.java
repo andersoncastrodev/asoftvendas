@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.asoft.exception.CodigoNaoExisteException;
 import com.asoft.model.Cidade;
 import com.asoft.model.Endereco;
 import com.asoft.repository.CidadeRepository;
@@ -18,6 +16,7 @@ public class EnderecoService {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
+	@Autowired
 	private CidadeRepository cidadeRepository;
 	
 	public List<Endereco> consultarTodos(){
