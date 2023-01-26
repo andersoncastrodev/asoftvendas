@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.asoft.exception.CodigoNaoExisteException;
 import com.asoft.model.Cidade;
 import com.asoft.model.Endereco;
 import com.asoft.repository.CidadeRepository;
@@ -35,12 +37,23 @@ public class EnderecoService {
 		
 		Optional<Cidade> cidade = cidadeRepository.findById(cidadeId);
 		
+		if(cidade.isEmpty()) {
+			throw new CodigoNaoExisteException(String.format("Não existe uma cidade de codigo: %d", cidadeId) );
+		}
+		
 		endereco.setCidade( cidade.get() );
 		
 		return enderecoRepository.save(endereco);
 	}
 	
-	public void excluir() {
+	public void excluir(Long EnderecoId) {
+		
+		Optional<Endereco> endereco = enderecoRepository.findById(EnderecoId);
+		
+		if (endereco.isEmpty()) {
+			throw new CodigoNaoExisteException(String.format("Não existe uma cidade de codigo: %d", EnderecoId));
+		}
+		enderecoRepository.deleteById(EnderecoId);
 		
 	}
 	
