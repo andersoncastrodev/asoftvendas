@@ -2,7 +2,6 @@ package com.asoft.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.asoft.exception.CodigoNaoExisteException;
 import com.asoft.model.Endereco;
 import com.asoft.service.EnderecoService;
@@ -45,8 +43,10 @@ public class EnderecoController {
 		return ResponseEntity.ok().body( endereco.get() );
 	}
 	
-	public ResponseEntity<Endereco> consultarLikeNome(){
-		return null;
+	@GetMapping("/por-lograduro")
+	public ResponseEntity<List<Endereco>> consultarLikeNome(String lograduro){
+		
+		return ResponseEntity.ok().body(enderecoService.consultaLikeNome(lograduro));
 	}
 	
 	@PostMapping
@@ -72,7 +72,10 @@ public class EnderecoController {
 				
 				BeanUtils.copyProperties(endereco, enderecoAtual.get(), "id");
 				
-				return ResponseEntity.ok(enderecoService.salvar(endereco));
+				Endereco enderecoSalva = enderecoService.salvar(enderecoAtual.get());
+		    	
+		    	return ResponseEntity.ok().body(enderecoSalva);
+		    	
 			}
 
 			return ResponseEntity.notFound().build();

@@ -31,6 +31,11 @@ public class EnderecoService {
 		return enderecoRepository.findById(enderecoId);
 	}
 	
+	public List<Endereco> consultaLikeNome(String lograduro){
+		
+		return enderecoRepository.findByLograduroContaining(lograduro);
+	}
+	
 	public Endereco salvar(Endereco endereco) {
 		
 		Long cidadeId = endereco.getCidade().getId();
