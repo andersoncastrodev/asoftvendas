@@ -1,8 +1,8 @@
 package com.asoft.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +24,10 @@ public class Cliente {
 	@Column(nullable = false)
 	private String telefone;
 	
-	private LocalDateTime dataNascimento;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	@Column(name = "data_nascimento")
+	private LocalDate dataNascimento;
 	
 	private Boolean ativo;
 
@@ -57,11 +60,12 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 
-	public LocalDateTime getDataNascimento() {
+	
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDateTime dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -98,8 +102,5 @@ public class Cliente {
 		return Objects.equals(id, other.id);
 	}
 	
-	
-	
-	
-	
+
 }
