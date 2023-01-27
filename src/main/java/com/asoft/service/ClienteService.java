@@ -1,5 +1,6 @@
 package com.asoft.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,16 @@ public class ClienteService {
 		return clienteRepository.findById(clienteId);
 	}
 	
+	public List<Cliente> consultaLikeNome(String nome){
+		
+		return clienteRepository.findByNomeContaining(nome);
+	}
+	
+	public List<Cliente> consultaDataNasc(LocalDate dataNasc){
+		
+		return clienteRepository.findByDataNascimento(dataNasc);
+	}
+	
 	public Cliente salvar(Cliente cliente){
 		
 		Long enderecoId = cliente.getEndereco().getId();
@@ -50,7 +61,7 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 	
-	public void excluir(Long clienteId) {
+	public void excluir(Long clienteId){
 		
 		try {
 			

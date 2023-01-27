@@ -1,5 +1,6 @@
 package com.asoft.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,10 +40,18 @@ public class ClienteController {
 		return clienteService.consultaId(clienteId);
 	}
 	
-	public Cliente consultarLikeNome() {
+	@GetMapping("/por-nome")
+	public ResponseEntity<List<Cliente>> consultarLikeNome(String nome) {
 		
-		return null;
+		return ResponseEntity.ok().body(clienteService.consultaLikeNome(nome));
 	}
+	
+	@GetMapping("/por-datanasc")
+	public ResponseEntity<List<Cliente>> consultaDataNasc(LocalDate dataNasc){
+		
+		return ResponseEntity.ok().body(clienteService.consultaDataNasc(dataNasc));
+	}
+	
 	
 	@PostMapping
 	public ResponseEntity<?> adicionar(@RequestBody Cliente cliente){
