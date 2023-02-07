@@ -47,9 +47,15 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/por-datanasc")
-	public ResponseEntity<List<Cliente>> consultaDataNasc(LocalDate dataNasc){
+	public ResponseEntity<?> consultaDataNasc(LocalDate dataNasc){
+
+			return ResponseEntity.ok().body(clienteService.consultaDataNasc(dataNasc));
+	}
+	
+	@GetMapping("/por-telefone")
+	public ResponseEntity<Cliente> consultarPorTelefone(String telefone){
 		
-		return ResponseEntity.ok().body(clienteService.consultaDataNasc(dataNasc));
+		return ResponseEntity.ok().body(clienteService.consultaPorTelefone(telefone));
 	}
 	
 	

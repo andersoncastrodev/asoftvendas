@@ -41,9 +41,15 @@ public class ClienteService {
 		return clienteRepository.findByNomeContaining(nome);
 	}
 	
-	public List<Cliente> consultaDataNasc(LocalDate dataNasc){
+	public Cliente consultaDataNasc(LocalDate dataNasc){
 		
 		return clienteRepository.findByDataNascimento(dataNasc);
+
+	}
+	
+	public Cliente consultaPorTelefone(String telefone) {
+		
+		return clienteRepository.findByTelefone(telefone);
 	}
 	
 	public Cliente salvar(Cliente cliente){

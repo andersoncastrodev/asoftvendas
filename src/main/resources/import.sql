@@ -23,3 +23,15 @@ insert into cliente (ativo, data_nascimento, nome, telefone, endereco_id) values
 insert into cliente (ativo, data_nascimento, nome, telefone, endereco_id) values (0, '1999-02-14', 'Maria Fernandes', '85 8574-8574', 4);
 insert into cliente (ativo, data_nascimento, nome, telefone, endereco_id) values (1, '2015-01-20', 'Helena Sousa', '85 9999-8574', 5);
 
+insert into venda (ativo, data_cancelamento, data_venda, sub_total, total, cliente_id) values (1,'2022-12-12','2022-12-01', 150.00, 300.00, 1);
+insert into venda (ativo, data_cancelamento, data_venda, sub_total, total, cliente_id) values (1,'2022-11-10','2022-11-02', 75.00,  150.00, 2);
+insert into venda (ativo, data_cancelamento, data_venda, sub_total, total, cliente_id) values (1,'2022-10-10','2022-10-03', 250.00, 500.00, 3);
+insert into venda (ativo, data_cancelamento, data_venda, sub_total, total, cliente_id) values (1,'2022-09-09','2022-09-02', 125.00, 250.00, 4);
+insert into venda (ativo, data_cancelamento, data_venda, sub_total, total, cliente_id) values (1,'2022-08-12','2022-08-01', 25.00, 50.00, 5);
+
+insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Teclado de Computador','Teclado',20.50,50.00);
+insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Mouse de Computador','Mouse',15.00,25.00);
+insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Monitor de Computador','Monitor',150.00,350.00);
+insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Camera de Fotografia','Camera',400.0,800.00);
+insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Fone de HeadSet','Fone',14.50,45.00);
+
