@@ -35,3 +35,8 @@ insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1
 insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Camera de Fotografia','Camera',400.0,800.00);
 insert into produto (ativo, descricao, nome, preco_custo, preco_venda) values (1,'Fone de HeadSet','Fone',14.50,45.00);
 
+insert into carrinho (status, produto_id, venda_id) values (1,1,2);
+insert into carrinho (status, produto_id, venda_id) values (1,2,1);
+insert into carrinho (status, produto_id, venda_id) values (1,3,3);
+insert into carrinho (status, produto_id, venda_id) values (1,4,4);
+insert into carrinho (status, produto_id, venda_id) values (1,5,1);
