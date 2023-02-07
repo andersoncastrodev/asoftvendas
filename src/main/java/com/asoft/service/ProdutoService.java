@@ -15,6 +15,7 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
+
 	
 	public List<Produto> consultarTodos(){
 		return produtoRepository.findAll();
@@ -22,6 +23,11 @@ public class ProdutoService {
 	
 	public Optional<Produto> consultaId(Long produtoId) {
 		return produtoRepository.findById(produtoId);
+	}
+	
+	public List<Produto> consultaPorLike(String produtoNome) {
+		
+		return produtoRepository.findByNomeContaining(produtoNome);
 	}
 	
 	public Produto salvar(Produto produto) {

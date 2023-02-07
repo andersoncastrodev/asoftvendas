@@ -45,9 +45,9 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/nome-produto")
-	public ResponseEntity<Produto> consultaPorNome(String nome){
+	public ResponseEntity<List<Produto>> consultaPorNome(String nome){
 		
-		return null;
+		return ResponseEntity.ok().body(produtoService.consultaPorLike(nome));
 	}
 	
 	@PostMapping
